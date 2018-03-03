@@ -1,0 +1,4 @@
+
+config/firebase-api-key.js
+node_modules/
+.next/
