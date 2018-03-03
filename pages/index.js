@@ -31,6 +31,7 @@ export class Index extends Component {
       loading: true,
       error: '',
       auth: false,
+      authChecked: false,
       // Data from Firebase
       data: {}
     }
@@ -43,15 +44,15 @@ export class Index extends Component {
     firebase.auth().onAuthStateChanged(function(user) {
       console.log("firebase state has changed!")
       if (user) {
-        that.setState({ auth: true })
+        that.setState({ auth: true, authChecked: true })
       } else {
-        that.setState({ auth: false })
+        that.setState({ auth: false, authChecked: true })
       }
     });
   }
 
   render () {
-    if (this.state.loading) {
+    if (this.state.loading || !this.state.authChecked) {
       return (
         <main>
           Just a second...
