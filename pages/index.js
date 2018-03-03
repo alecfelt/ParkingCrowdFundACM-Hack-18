@@ -3,19 +3,26 @@ import React, { Component } from 'react'
 import Stylesheet from '../components/stylesheet.js'
 import sheet from '../components/base.scss'
 
+import SignUp from '../components/signUp/signUp.js'
+import Home from '../components/home/home.js'
 
-// TODO: Uncomment if you want Firebase
-// import config from '../config/firebase-api-key.js'
-// import * as firebase from 'firebase'
-// require('firebase/firestore')
-// if (!firebase.apps.length) {
-//   console.log(
-//     '%cCreating a new firebase instance...',
-//     'color: grey; font-style: italic'
-//   )
-//
-//   firebase.initializeApp(config)
-// }
+import * as firebase from 'firebase'
+var config = {
+    apiKey: "AIzaSyCVEEwbgwXp2kpDD9-u72atE8o7u5_Ux0s",
+    authDomain: "acmhacks18.firebaseapp.com",
+    databaseURL: "https://acmhacks18.firebaseio.com",
+    projectId: "acmhacks18",
+    storageBucket: "acmhacks18.appspot.com",
+    messagingSenderId: "308002604476"
+};
+if (!firebase.apps.length) {
+  console.log(
+    '%cCreating a new firebase instance...',
+    'color: grey; font-style: italic'
+  )
+
+  firebase.initializeApp(config)
+}
 
 export class Index extends Component {
   constructor (props, context) {
@@ -23,36 +30,25 @@ export class Index extends Component {
     this.state = {
       loading: true,
       error: '',
-
+      auth: false,
       // Data from Firebase
       data: {}
     }
   }
 
   componentDidMount () {
-    console.debug('Loaded')
     this.setState({ loading: false })
-
-  // TODO: uncomment if you want Firebase
-  //   this.getDataFromFirebase().then((data) => {
-  //     this.setState({
-  //       loading: false,
-  //       data
-  //     })
-  //   }).catch((error) => {
-  //     this.setState({
-  //       loading: false,
-  //       error
-  //     })
-  //   })
+    this.setState({ auth: firebase.auth().currentUser })
+    var that = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log("firebase state has changed!")
+      if (user) {
+        that.setState({ auth: true })
+      } else {
+        that.setState({ auth: false })
+      }
+    });
   }
-
-  // TODO: uncomment if you want Firebase
-  // async getDataFromFirebase () {
-  //   const rootCollection = firebase.firestore().collection('triplebyte')
-  //   const rootDoc = await rootCollection.doc('root').get()
-  //   return rootDoc.data()
-  // }
 
   render () {
     if (this.state.loading) {
@@ -65,16 +61,22 @@ export class Index extends Component {
     } else if (this.state.error) {
       return (
         <main>
-          <h1>That's bad. The following error occurred:</h1>
+          <h1>That is bad. The following error occurred:</h1>
           <div className='error'>{this.state.error}</div>
           <Stylesheet sheet={sheet} />
         </main>
       )
+    } else if (!this.state.auth) {
+      return (
+        <main>
+          <SignUp />
+          <Stylesheet sheet={sheet} />
+        </main>
+      )
     }
-
     return (
       <main>
-        <h1>App title</h1>
+        <Home />
         <Stylesheet sheet={sheet} />
       </main>
     )

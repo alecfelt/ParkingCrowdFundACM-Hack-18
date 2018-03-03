@@ -4,13 +4,13 @@
 @import 'animations';
 
 body {
-  color: $white;
-  background: $black;
+  color: $black;
+  background: #F6F6F6;
   -webkit-font-smoothing: subpixel-antialiased;
   font: 16px/20px $base-font-family;
   padding: 4em 10vw;
   font-weight: 400;
-
+  align-items: center;
   display: flex;
   flex-direction: column;
 }
