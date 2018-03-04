@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Stylesheet from '../stylesheet.js'
-import sheet from './home.scss'
+import sheet from './welcome.scss'
 
 class Welcome extends Component{
 	constructor(props, context){

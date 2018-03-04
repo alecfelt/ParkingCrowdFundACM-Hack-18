@@ -70,7 +70,7 @@ export class Index extends Component {
       )
     } else if (!this.state.auth) {
       return (
-        <Welcome />
+        <SignUp />
       )
     }
     return (
