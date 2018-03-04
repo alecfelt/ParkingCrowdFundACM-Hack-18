@@ -1,26 +1,34 @@
-###TicketPool
+###Instructions###
+```bash
+npm run dev
+```
+```bash
+navigate to localhost:3000 in your browser
+```
+
+###TicketPool###
 Contributors : Alec Felt, Sean Bell, Samir Shingane
 
-###Concept:
+###Concept:###
 
 TicketPool is an alternative for purchasing a parking permit at UCSC. It is aimed towards the students who don't necessarily drive to campus on a 
 daily basis and risk the occasional parking ticket instead of purchasing a $600+ permit. By signing up with the service you commit to a quarter 
 long contract in which you pay a small part of your ticket and the rest is crowd funded. It's an insurance policy for parking on campus without a 
 parking permit.
 
-###Design:
+###Design:###
 
 When the user first arrives at the site, they are greeted with a Welcome page. If they have already created an account, they can simply log in. If
 they are new to the serivice, they register using their email. Once in the site, they see a map, which displays where other users have recieved 
 citations, as well as parking enforcement has been spotted. Above the map, the user can fill out information about any citations they may have 
 gotten, and place the location of the citation on the map. 
 
-###Implementation:
+###Implementation:###
 
 Our website uses Firebase's API to authenticate users, and is designed in Javascript. The site uses the Google Maps API to show the locations of 
 citations and parking enforcement officers on the map. 
 
-###Initial/Future Goals:
+###Initial/Future Goals:###
 
 When a user submits a ticket to be crowd funded, all members receive a small charge to help pay for the ticket. If the user consistently receives 
 one or fewer tickets a quarter, the rate they will pay on other user's tickets will go down, and vice versa. We intended TicketPool to be a
