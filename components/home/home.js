@@ -24,11 +24,38 @@ class Home extends Component {
       });
   }
 
+  handleCite = () => {
+
+  }
+
+  handleLicense = () => {
+
+  }
+
   render () {
     return (
-      <div className="homeContainer">
-        <div className="signOutButton" onClick={this.signOut}>
-          sign out
+      <div className="home">
+        <div className="leftHome">
+          <div className="signOutButton" onClick={this.signOut}>
+            sign out
+          </div>
+          <div className="addLocation">
+            <div className="locationSearch">
+              search
+            </div>
+            <div className="enterLocation">
+              enter
+            </div>
+          </div>
+        </div>
+        <div className="rightHome">
+          <div className="addCitation">
+            <input type="text" value={this.state.citationNum} onChange={this.handleCite} />
+            <input type="text" value={this.state.license} onChange={this.handleLicense} />
+          </div>
+          <div className="citationList">
+
+          </div>
         </div>
         <Stylesheet sheet={sheet} />
       </div>

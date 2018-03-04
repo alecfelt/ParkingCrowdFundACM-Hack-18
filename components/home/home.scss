@@ -3,14 +3,62 @@
 .home {
   width: 100%;
   height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leftHome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rightHome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .signOutButton {
   width: 60px;
   border-radius: 5px;
+  margin: 20px 0px 0px 20px;
   padding: 5px;
   border: 2px solid $black;
   box-shadow: 0px 3px 3px #BBBBBB;
   text-align: center;
   background: #FFFFFF;
+}
+
+.addLocation {
+  width: auto;
+  display: flex;
+  margin: 0px 0px 20px 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locationSearch {
+
+}
+
+.enterLocation {
+
+}
+
+.addCitation {
+
+}
+
+.citationList {
+
+}
+
+.citation {
+  
 }

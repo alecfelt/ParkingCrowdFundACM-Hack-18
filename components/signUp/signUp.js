@@ -9,7 +9,7 @@ class SignUp extends Component {
     this.state = {
       email: '',
       password: '',
-      confirmPassword: '',
+      passwordConfirm: '',
       signUp: false
     }
     this.signUp = this.signUp.bind(this)
@@ -20,12 +20,13 @@ class SignUp extends Component {
   }
 
   signUp = () => {
-    if(this.state.password == this.state.confirmPassword) {
+    if(this.state.password == this.state.passwordConfirm) {
       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         console.error("ERROR! code: "+errorCode+" message: "+errorMessage)
+        alert(errorMessage)
       });
     } else {
       alert("Passwords do not match!")
@@ -38,6 +39,7 @@ class SignUp extends Component {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.error("ERROR! code: "+errorCode+" message: "+errorMessage)
+      alert(errorMessage)
     });
   }
 
