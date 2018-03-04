@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
 import Stylesheet from '../components/stylesheet.js'
-import sheet from '../components/base.scss'
+import sheetSignUp from '../components/signUpIndex.scss'
 
 import SignUp from '../components/signUp/signUp.js'
 import Home from '../components/home/home.js'
+import GoogleMaps from '../components/googleMaps/googleMaps.js'
 
 import * as firebase from 'firebase'
 var config = {
@@ -56,7 +57,7 @@ export class Index extends Component {
       return (
         <main>
           Just a second...
-          <Stylesheet sheet={sheet} />
+          <Stylesheet sheet={sheetSignUp} />
         </main>
       )
     } else if (this.state.error) {
@@ -64,22 +65,19 @@ export class Index extends Component {
         <main>
           <h1>That is bad. The following error occurred:</h1>
           <div className='error'>{this.state.error}</div>
-          <Stylesheet sheet={sheet} />
+          <Stylesheet sheet={sheetSignUp} />
         </main>
       )
     } else if (!this.state.auth) {
       return (
-        <main>
-          <SignUp />
-          <Stylesheet sheet={sheet} />
-        </main>
+        <SignUp />
       )
     }
     return (
-      <main>
+      <div style={{width: '100%', height: '1000px'}}>
         <Home />
-        <Stylesheet sheet={sheet} />
-      </main>
+        <GoogleMaps />
+      </div>
     )
   }
 }

@@ -13,6 +13,7 @@
     "color-convert": "^1.9.0",
     "express": "^4.14.1",
     "firebase": "^4.10.0",
+    "google-map-react": "^0.32.0",
     "js-yaml": "^3.8.4",
     "next": "^5.0.0",
     "node-sass": "^4.5.0",
