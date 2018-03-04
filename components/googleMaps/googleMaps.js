@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import Stylesheet from '../stylesheet.js'
 import sheet from './googleMaps.scss'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div style={{fontSize: '30px'}}>{text}</div>;
 
 class GoogleMaps extends Component {
   constructor(props, context) {
@@ -12,27 +12,53 @@ class GoogleMaps extends Component {
     this.setState = {
 
     }
+    Object.entries(this.props).map((prop) => {
+      console.dir("prop: "+prop);
+    });
+    console.dir("props: "+this.props.places);
+  }
+
+  componentDidMount = () => {
+    console.dir("props: "+this.props.places);
   }
 
   static defaultProps = {
     center: {lng: -122.0595, lat: 36.9945},
-    zoom: 16
+    zoom: 16,
+    greatPlaces: [
+      {id: '!!!', lng: -122.0595, lat: 36.9945}
+    ]
   };
 
+  _onChildClick = (key, childProps) => {
+    console.log("click");
+    this.props.greatPlaces.push({id: '!!!', lat: childProps.lat, lng: childProps.lng});
+  }
+
   render() {
-    console.log(this.props.center)
-    console.log(this.props.zoom)
+
+    const places = this.props.greatPlaces
+      .map(place => {
+        const {id, lat, lng} = place;
+
+        return (
+          <AnyReactComponent
+            key={id}
+            lat={lat}
+            lng={lng}
+            text={id}
+          />
+        );
+      });
+
     return (
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyBNA9umVCXSI4JqpJJNWhNt-eoRm98lsvI' }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
+        onChildClick={this._onChildClick}
       >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'Kreyser Avrora'}
-        />
+        {places}
       </GoogleMapReact>
     );
   }
